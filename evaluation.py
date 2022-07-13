@@ -7,8 +7,6 @@ import nltk
 import numpy as np
 from nltk.stem import WordNetLemmatizer
 import tensorflow as tf
-from keras import Sequential
-from keras.layers import Dense, Dropout
 nltk.download("punkt")
 nltk.download("wordnet")
 nltk.download('omw-1.4')
