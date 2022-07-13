@@ -1,6 +1,5 @@
 from email import message
 import json
-from lib2to3.pgen2 import token
 import string
 import random
 
