@@ -1,46 +1,27 @@
 import json
 import string
 import random
+import pickle
 
 import nltk
 import numpy as np
+from keras.models import load_model
 from nltk.stem import WordNetLemmatizer
-import tensorflow as tf
-nltk.download("punkt")
-nltk.download("wordnet")
-nltk.download('omw-1.4')
+# nltk.download("punkt")
+# nltk.download("wordnet")
+# nltk.download('omw-1.4')
 
-model = tf.keras.models.load_model('ipo_model')
-print(model.summary())
+model = load_model('ipo_model/ipo_model.h5')
 
 #Load the intents file
-data_file = open('intents.json')
+data_file = open('ipo_model/intents.json')
 data = json.load(data_file)
 
-#Create data_x and data_y
-words = []
-classes = []
-data_x = []
-data_y = []
-
-for intent in data["intents"]:
-    for pattern in intent["patterns"]:
-        tokens = nltk.word_tokenize(pattern)
-        words.extend(tokens)
-        data_x.append(pattern)
-        data_y.append(intent["tag"])
-
-    if intent["tag"] not in classes:
-        classes.append(intent["tag"])
+# Load the vocabulary and classes
+words = pickle.load(open("ipo_model/words.pkl", "rb"))
+classes = pickle.load(open("ipo_model/classes.pkl", "rb"))
 
 lemmatizer = WordNetLemmatizer()
-
-#lemmatize all words in the vocab and convert to lowercase if words don't appear in punctuation
-words = [lemmatizer.lemmatize(word.lower()) for word in words if word not in string.punctuation]
-
-#sort vocab and classes in alphabetical order and taking the # set to ensure no duplicates occur
-words = sorted(set(words))
-classes = sorted(set(classes))
 
 #Preprocessing the input
 def clean_text(text):
