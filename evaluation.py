@@ -2,6 +2,7 @@ import json
 import string
 import random
 import pickle
+import asyncio
 
 import nltk
 import numpy as np
@@ -61,7 +62,7 @@ def get_response(intents_list, intents_json):
                 break
     return result
 
-def chatbot_response(msg):
+async def chatbot_response(msg):
     ints = pred_class(msg, words, classes)
     res = get_response(ints, data)
     return res
