@@ -23,10 +23,10 @@ source chatbot_env/Scripts/activate
 
 3. Instalar dependências: 
 ```python
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 4. Na pasta do projecto:
 ```python
-python .\evaluation.py
+python .\chatapp.py
 ```

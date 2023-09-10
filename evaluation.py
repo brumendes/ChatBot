@@ -80,13 +80,18 @@ def get_response(intents_list, intents_json):
                 break
     return result
 
+def chatbot_response(msg):
+    ints = pred_class(msg, words, classes)
+    res = get_response(ints, data)
+    return res
+
 
 #Interacting with the chatbot
-print("Press 0 if you don't want to chat with our Chatbot.")
-while True:
-    message = input("")
-    if message == "0":
-        break
-    intents = pred_class(message, words, classes)
-    result = get_response(intents, data)
-    print(result)
+# print("Press 0 if you don't want to chat with our Chatbot.")
+# while True:
+#     message = input("")
+#     if message == "0":
+#         break
+#     intents = pred_class(message, words, classes)
+#     result = get_response(intents, data)
+#     print(result)
