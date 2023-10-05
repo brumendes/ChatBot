@@ -9,7 +9,7 @@ const createWindow = () => {
       nodeIntegration: true,
       contextIsolation: false
     },
-    resizable: false,
+    //resizable: false,
   })
 
   // win.webContents.openDevTools()
