@@ -8,19 +8,19 @@ import nltk
 import numpy as np
 from keras.models import load_model
 from nltk.stem import WordNetLemmatizer
-# nltk.download("punkt")
-# nltk.download("wordnet")
-# nltk.download('omw-1.4')
+nltk.download("punkt")
+nltk.download("wordnet")
+nltk.download('omw-1.4')
 
-model = load_model('ipo_model/ipo_model.h5')
+model = load_model('./ipo_model/ipo_model.h5')
 
 #Load the intents file
-data_file = open('ipo_model/intents.json')
+data_file = open('./ipo_model/intents.json')
 data = json.load(data_file)
 
 # Load the vocabulary and classes
-words = pickle.load(open("ipo_model/words.pkl", "rb"))
-classes = pickle.load(open("ipo_model/classes.pkl", "rb"))
+words = pickle.load(open("./ipo_model/words.pkl", "rb"))
+classes = pickle.load(open("./ipo_model/classes.pkl", "rb"))
 
 lemmatizer = WordNetLemmatizer()
 
@@ -52,7 +52,7 @@ def pred_class(text, vocab, labels):
 
 def get_response(intents_list, intents_json):
     if len(intents_list) == 0:
-        result = "sorry! I don't understand."
+        result = "Desculpe, mas não percebi."
     else:
         tag = intents_list[0]
         list_of_intents = intents_json["intents"]
@@ -62,10 +62,10 @@ def get_response(intents_list, intents_json):
                 break
     return result
 
-async def chatbot_response(msg):
+def chatbot_response(msg):
     ints = pred_class(msg, words, classes)
     res = get_response(ints, data)
-    return res
+    return str(res.encode("ISO 8859-1").decode())
 
 
 #Interacting with the chatbot

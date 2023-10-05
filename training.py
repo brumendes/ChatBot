@@ -2,10 +2,9 @@ import json
 import string
 import random
 import pickle
-
 import nltk
 import numpy as np
-from nltk.stem import WordNetLemmatizer
+from nltk.stem import RSLPStemmer, WordNetLemmatizer
 import tensorflow as tf
 from keras import Sequential
 from keras.layers import Dense, Dropout
@@ -15,18 +14,20 @@ nltk.download("wordnet")
 nltk.download('omw-1.4')
 
 #Load the intents file
-data_file = open('ipo_model/intents.json')
-data = json.load(data_file)
+with open('ipo_model/intents.json') as data_file:
+    data = json.load(data_file)
 
 #Create data_x and data_y
 words = []
 classes = []
 documents = []
 igonore_words = ["?", "!"]
+stopwords = nltk.corpus.stopwords.words('portuguese')
+print(stopwords)
 
 for intent in data["intents"]:
     for pattern in intent["patterns"]:
-        tokens = nltk.word_tokenize(pattern)
+        tokens = nltk.word_tokenize(pattern, language="portuguese")
         words.extend(tokens)
         documents.append((tokens, intent["tag"]))
         if intent["tag"] not in classes:
@@ -34,9 +35,11 @@ for intent in data["intents"]:
 
 #Initialize lemmatizer to get stem of words
 lemmatizer = WordNetLemmatizer()
+lemmatizer_pt = RSLPStemmer()
 
 #lemmatize all words in the vocab and convert to lowercase if words don't appear in punctuation
 words = [lemmatizer.lemmatize(word.lower()) for word in words if word not in string.punctuation]
+print(words)
 
 #sort vocab and classes in alphabetical order and taking the # set to ensure no duplicates occur
 words = sorted(set(words))
@@ -85,7 +88,7 @@ model.add(Dense(64, activation="relu"))
 model.add(Dropout(0.5))
 model.add(Dense(len(train_y[0]), activation="softmax"))
 adam = tf.keras.optimizers.Adam(learning_rate=0.01, decay=1e-6)
-sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+sgd = SGD(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(
     loss="categorical_crossentropy",
     optimizer=sgd,

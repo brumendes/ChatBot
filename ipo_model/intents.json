@@ -1,33 +1,156 @@
 {"intents": [
     {
-        "context": "",
-        "patterns": ["Hello", "Hi there", "Good morning", "What's up"],
-        "responses": ["Hey!", "Hello", "Hi!", "Good morning!"],
-        "tag": "hello"
-    },
-    {
-        "context": [""],
-        "patterns": [],
-        "responses": [
-            "Sorry, can't understand you",
-            "Please give me more info",
-            "Not sure I understand you"
+        "tag": "saudacao",
+        "patterns": [
+            "Olá", 
+            "Bom dia", 
+            "Boa tarde", 
+            "Boa noite"
         ],
-        "tag": "noanswer"
-    },
-    {
-        "context":"",
-        "patterns": ["What is your job", "What is your work"],
         "responses": [
-            "My job is to make you feel like everything is ok.",
-            "I work to serve you as well as possible."
-        ],
-        "tag": "job"
+            "Olá, eu sou o RadioChat, em que posso ajudar?", 
+            "Olá bem vindo", 
+            "Olá em que posso ser útil?"
+        ]
     },
     {
-        "context":"",
-        "patterns": ["What is your age", "hold old are you", "When were you born"],
-        "responses": ["I was born in 2022"],
-        "tag": "age"
+        "tag": "semresposta",
+        "patterns": [
+            "Estou farto de ligar e ninguém atende",
+            "Enviei um email na semana passada e ninguém me respondeu",
+            "Estou à espera que me chamem para iniciar tratamento"
+        ],
+        "responses": [
+            "Obrigado por interagir com o RadioChat. Não entendemos a sua questão, por favor queira reformular a mesma.",
+            "Consulte mais informações em https://ipoporto.pt/wpsite_2020/wp-content/uploads/2021/05/GUIA-UTENTE-2021_SITE.pdf",
+            "Contacte o IPO Porto através do telefone geral 225 084 000 e peça que encaminhem a chamada para o Serviço/Clínica onde está a ser seguido."
+        ],
+        "context": [""]
+    },
+    {
+        "tag": "exames",
+        "patterns": [
+            "Quero marcar um exame, como devo proceder?", 
+            "Como faço para alterar a data de um exame?", 
+            "Preciso de marcar um exame, como devo proceder?"
+        ],
+        "responses": [
+            "Se pretender marcar ou alterar um exame, poderá enviar um email com o pedido para 'examesmedicos@ipoporto.min-saude.pt', juntamente com o seu número de identificação do IPO.",
+            "Caso necessite de alterar ou marcar um exame, por favor dirija-se ao balcão de atendimento ou contacte telefonicamente o serviço respectivo."
+        ]
+    },
+    {
+        "tag": "consultas",
+        "patterns": [
+            "Quero mudar a hora da minha consulta, o que tenho de fazer?", 
+            "Preciso de marcar uma consulta com o meu médico, como faço?"
+        ],
+        "responses": [
+            "Se pretender alterar ou marcar uma consulta, poderá enviar um email com o pedido para 'consultasmedicas@ipoporto.min-saude.pt', juntamente com o seu número de identificação do IPO.",
+            "Caso necessite de alterar ou marcar uma consulta, por favor dirija-se ao balcão de atendimento ou contacte telefonicamente o serviço respectivo."
+        ]
+    },
+    {
+        "tag": "enfermagem",
+        "patterns": [
+            "Como faço para pedir uma consulta de enfermagem?", 
+            "Necessito de fazer um curativo, como devo proceder?",
+            "Preciso de ser avaliado pela enfermagem, o que tenho de fazer? "
+        ],
+        "responses": [
+            "Se pretender marcar uma consulta de enfermagem, poderá enviar um email com o pedido para 'consultasenfermagem@ipoporto.min-saude.pt', juntamente com o seu número de identificação do IPO.", 
+            "Deverá dirigir-se ao balcão de atendimento ou contactar telefonicamente o serviço respectivo.",
+            "Para efectuar uma marcação na àrea da enfermagem, por favor seleccione no menu principal o tema 'Enfermagem' e responda ás questões que lhe são apresentadas."
+        ]
+    },
+    {
+        "tag": "relatorios",
+        "patterns": [
+            "Necessito de um relatório médico. Como deverei proceder?", 
+            "Como poderei ter acesso a um relatório médico?", 
+            "Como posso pedir um relatório médico?"
+        ],
+        "responses": [
+            "Se necessita de um relatório médico, deverá enviar um email para 'relatoriosmedicos@ipoporto.min-saude.pt', com o seu número de identificação do IPO.",
+            "Se necessita de um relatório médico, poderá ligar para o número 222 111 333 e pedir para falar com o respetivo serviço.",
+            "Se pretende ter um relatório médico, poderá dirigir-se ao balcão de atendimento."
+        ]
+    },
+    {
+        "tag": "receitas",
+        "patterns": [
+            "Preciso de uma receita médica. Como devo fazer?", 
+            "Acabou um dos meus medicamentos, o médico pode passar a receita sem consulta?", 
+            "Posso pedir receitas para os meus familiares?"
+        ],
+        "responses": [
+            "Deverá enviar um email para 'consultasmedicas@ipoporto.min-saude.pt' com o seu número do IPO e indicar a medicação que necessita. O seu pedido será analisado e posteriormente contactado.",
+            "Poderá dirigir-se ao balcão de atendimento do serviço respectivo e solicitar uma consulta com o seu médico.",
+            "Contacte telefonicamente o serviço respectivo e solicite uma consulta médica."
+        ]
+    },
+    {
+        "tag": "tratamentos",
+        "patterns": [
+            "Preciso de estar em jejum para realizar o tratamento de radioterapia?", 
+            "Posso comer antes de fazer o tratamento de radioterapia?"
+        ],
+        "responses": [
+            "Não necessita de estar em jejum para fazer o seu tratamento de radioterapia",
+            "Sim, é necessário estar em jejum para realizar o seu tratamento de radioterapia.",
+            "Sim, pode comer antes de realizar o seu tratamento de radioterapia.",
+            "Não deve comer pois necessita de estar em jejum para realizar o seu tratamento"
+        ]
+    },
+    {
+        "tag": "contactos",
+        "patterns": [
+            "Posso estar com crianças e grávidas durante os tratamentos de radioterapia?", 
+            "Devo ter cuidado com crianças e grávidas enquanto faço os tratamentos de radioterapia?",
+            "É desaconselhado permanecer junto de crianças e grávidas enquanto faço os tratamentos de radioterapia?"
+        ],
+        "responses": [
+            "Sim, pode estar junto de crianças e grávidas.",
+            "Enquanto faz os tratamentos de radioterapia pode estar próximo de crianças e grávidas.",
+            "Não, não tem qualquer contra-indicação em estar junto de crianças e grávidas."
+        ]
+    },
+    {
+        "tag": "tempo",
+        "patterns": [
+            "Quanto tempo demora o tratamento?", 
+            "O tratamento é demorado?", 
+            "O tratamento demora a manhâ/tarde inteira?"
+        ],
+        "responses": [
+            "Dependendo do tipo de técnica e patologia, o tratamento pode demorar entre 15 a 60 min.", 
+            "Existem variadas técnicas de tratamento pelo que o tempo pode variar entre 15 a 60min."
+        ]
+    },
+    {
+        "tag": "acompanhantes",
+        "patterns": [
+            "Posso levar acompanhante?",
+            "O meu acompanhante pode estar comigo enquanto faço tratamento?",
+            "Tenho dificuldade em movimentar-me. Posso ser acompanhado?"
+        ],
+        "responses": [
+            "Pode levar acompanhante até à sala de espera. Este não poderá entrar na zona de tratamentos. Mas estará bem acompanhado pelos nossos colaboradores.",
+            "Durante o tratamento ficará sozinho na sala mas sempre sob vigilância da nossa equipa.",
+            "Dadas as características do tratamento de radioterapia, não poderá estar acompanhado durante o tratamento."
+        ]
+    },
+    {
+        "tag": "horarios",
+        "patterns": [
+            "Os tratamentos têm hora marcada?",
+            "Os tratamentos são por ordem de chegada?",
+            "Como posso marcar hora para o meu tratamento?"
+        ],
+        "responses": [
+            "Os tratamentos são agendados aquando da primeira sessão.",
+            "Os tratamentos têm hora marcada que deverá ser cumprida. Por situações fora do nosso controlo poderão haver ligeiras alterações nos horários de tratamento (atrasos).",
+            "Existem dois turnos, manhã e tarde, entre as 8h30 e as 21h."
+        ]
     }
 ]}

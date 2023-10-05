@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <!-- <meta
+          http-equiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self'"
+        />
+        <meta
+          http-equiv="X-Content-Security-Policy"
+          content="default-src 'self'; script-src 'self'"
+        /> -->
+        <title>IPO - RadioChat</title>
+        <link rel="stylesheet" type="text/css" href="app.css">
+    </head>
+
+    <body>
+        <div class="chatbot-container">
+            <div id="header">
+                <img src="assets/ipo-logo.png" id="logo">
+            </div>
+            <div id="chatbot">
+                <div id="conversation">
+                  <div class="chatbot-message">
+                    <p class="chatbot-text">Olá! 👋 Eu sou o RadioChat, em que posso ajudar?</p>
+                  </div>
+                </div>
+                <form id="input-form">
+                  <message-container>
+                    <input id="input-field" type="text" placeholder="Escreva aqui a sua mensagem">
+                    <button id="submit-button" type="submit"></button>
+                  </message-container>
+                </form>
+            </div> 
+        </div>
+        <script src="./renderer.js"></script>
+    </body>
+
+</html>
